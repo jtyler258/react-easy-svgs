@@ -7,6 +7,8 @@ $ npm install react-easy-svgs
 ```
 
 ### Using
+
+# icon.js
 ```
 import React, { PureComponent } from 'react';
 import IconJSON from './icons.json';
@@ -16,7 +18,21 @@ const Svg = createSvgFromSet(IconJSON);
 export default class Icon extends PureComponent {
   render() {
     return (
-      <Svg name='left-arrow' />
+      <Svg {...this.props} />
+    )
+  }
+}
+```
+
+# myComponent.js
+```
+import React, { Component } from 'react';
+import Icon from './icon.js';
+
+export default class MyComponent extends Component {
+  render() {
+    return (
+      <Icon name='left-arrow' color='red' width='54' height='54' />
     )
   }
 }
