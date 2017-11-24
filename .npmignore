@@ -1,0 +1,7 @@
+/node_modules
+/test
+/.git
+.gitignore
+.babelrc
+.npmignore
+webpack.config.js
