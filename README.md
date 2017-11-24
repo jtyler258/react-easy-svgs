@@ -1,14 +1,15 @@
 **react**-**easy**-**svgs** is a react component that facilitates rendering inline svgs from a single json file.
 
-### Installing
+# Installing
 
 ```
 $ npm install react-easy-svgs
 ```
 
-### Using
+# Using
+> For code reusability it is recommended to create an **Icon** component wrapper and use that throughout your project
 
-# icon.js
+#### icon.js
 ```
 import React, { PureComponent } from 'react';
 import IconJSON from './icons.json';
@@ -24,7 +25,7 @@ export default class Icon extends PureComponent {
 }
 ```
 
-# myComponent.js
+#### myComponent.js
 ```
 import React, { Component } from 'react';
 import Icon from './icon.js';
@@ -38,14 +39,14 @@ export default class MyComponent extends Component {
 }
 ```
 
-### Props
+# Props
 
 - **color**: sets fill color for all paths in svg
 - **width**: width of svg
 - **height**: height of svg
 - ...any other svg-compatible attributes
 
-### Creating an SVG JSON file
+# Creating an SVG JSON file
 
 > It is recommended to use [svgson](https://github.com/elrumordelaluz/svgson) to generate a JSON file from a directory of SVGs
 - Install **svgson** globally
