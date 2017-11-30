@@ -484,7 +484,6 @@ var createSvgFromSet = function createSvgFromSet(iconFile) {
     _createClass(Svg, [{
       key: '_shouldApplyFillAttr',
       value: function _shouldApplyFillAttr(attrs) {
-        console.log(attrs);
         return attrs.hasOwnProperty('fill') && attrs.fill != 'none';
       }
     }, {
