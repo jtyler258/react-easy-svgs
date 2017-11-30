@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 const createSvgFromSet = (iconFile) => {
   class Svg extends PureComponent {
     _shouldApplyFillAttr(attrs) {
-      console.log(attrs);
       return attrs.hasOwnProperty('fill') && attrs.fill != 'none';
     }
 
