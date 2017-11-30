@@ -482,6 +482,12 @@ var createSvgFromSet = function createSvgFromSet(iconFile) {
     }
 
     _createClass(Svg, [{
+      key: '_shouldApplyFillAttr',
+      value: function _shouldApplyFillAttr(attrs) {
+        console.log(attrs);
+        return attrs.hasOwnProperty('fill') && attrs.fill != 'none';
+      }
+    }, {
       key: '_renderChildren',
       value: function _renderChildren(children) {
         var _this2 = this;
@@ -495,20 +501,25 @@ var createSvgFromSet = function createSvgFromSet(iconFile) {
                 _this2._renderChildren(c.childs, _this2.currentKey++)
               );
             } else if (c.name === 'polygon') {
-              return _react2.default.createElement(
-                'polygon',
-                _extends({}, c.attrs, { key: _this2.currentKey }),
-                _this2._renderChildren(c.childs, _this2.currentKey++)
-              );
-            } else if (c.name === 'path') {
               var attrs = Object.assign({}, c.attrs);
-              if (_this2.props.color) {
+              if (_this2.props.color && _this2._shouldApplyFillAttr(attrs)) {
                 attrs = Object.assign(attrs, { fill: _this2.props.color });
               }
 
               return _react2.default.createElement(
-                'path',
+                'polygon',
                 _extends({}, attrs, { key: _this2.currentKey }),
+                _this2._renderChildren(c.childs, _this2.currentKey++)
+              );
+            } else if (c.name === 'path') {
+              var _attrs = Object.assign({}, c.attrs);
+              if (_this2.props.color && _this2._shouldApplyFillAttr(_attrs)) {
+                _attrs = Object.assign(_attrs, { fill: _this2.props.color });
+              }
+
+              return _react2.default.createElement(
+                'path',
+                _extends({}, _attrs, { key: _this2.currentKey }),
                 _this2._renderChildren(c.childs, _this2.currentKey++)
               );
             }

@@ -23,9 +23,9 @@
   "author": "John Tyler",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jtyler258/react-icomoon-icons/issues"
+    "url": "https://github.com/jtyler258/react-easy-svgs/issues"
   },
-  "homepage": "https://github.com/jtyler258/react-icomoon-icons#readme",
+  "homepage": "https://github.com/jtyler258/react-easy-svgs#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
