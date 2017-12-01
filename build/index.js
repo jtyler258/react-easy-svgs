@@ -521,6 +521,8 @@ var createSvgFromSet = function createSvgFromSet(iconFile) {
                 _extends({}, _attrs, { key: _this2.currentKey }),
                 _this2._renderChildren(c.childs, _this2.currentKey++)
               );
+            } else if (c.name == 'ellipse') {
+              return _react2.default.createElement('ellipse', _extends({}, c.attrs, { key: _this2.currentKey++ }));
             }
           });
         }

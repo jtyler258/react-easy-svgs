@@ -38,6 +38,10 @@ const createSvgFromSet = (iconFile) => {
                 {this._renderChildren(c.childs, this.currentKey++)}
               </path>
             )
+          } else if (c.name == 'ellipse') {
+            return (
+              <ellipse {...c.attrs} key={this.currentKey++} />
+            )
           }
         })
       }
