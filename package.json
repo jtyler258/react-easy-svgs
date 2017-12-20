@@ -1,6 +1,6 @@
 {
   "name": "react-easy-svgs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Allows SVGs to be rendered inline from single JSON file",
   "main": "build/index.js",
   "scripts": {
