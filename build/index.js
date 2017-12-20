@@ -494,31 +494,58 @@ var createSvgFromSet = function createSvgFromSet(iconFile) {
         if (children) {
           return children.map(function (c) {
             if (c.name === 'g') {
-              return _react2.default.createElement(
-                'g',
-                _extends({}, c.attrs, { key: _this2.currentKey }),
-                _this2._renderChildren(c.childs, _this2.currentKey++)
-              );
-            } else if (c.name === 'polygon') {
               var attrs = Object.assign({}, c.attrs);
               if (_this2.props.color && _this2._shouldApplyFillAttr(attrs)) {
                 attrs = Object.assign(attrs, { fill: _this2.props.color });
               }
 
               return _react2.default.createElement(
-                'polygon',
-                _extends({}, attrs, { key: _this2.currentKey }),
+                'g',
+                _extends({}, attrs, { key: _this2.currentKey++ }),
                 _this2._renderChildren(c.childs, _this2.currentKey++)
               );
-            } else if (c.name === 'path') {
+            } else if (c.name === 'defs') {
+              return _react2.default.createElement(
+                'defs',
+                _extends({}, c.attrs, { key: _this2.currentKey++ }),
+                _this2._renderChildren(c.childs, _this2.currentKey++)
+              );
+            } else if (c.name === 'linearGradient') {
+              return _react2.default.createElement(
+                'linearGradient',
+                _extends({}, c.attrs, { key: _this2.currentKey++ }),
+                _this2._renderChildren(c.childs, _this2.currentKey++)
+              );
+            } else if (c.name === 'stop') {
+              return _react2.default.createElement('stop', _extends({}, c.attrs, { key: _this2.currentKey++ }));
+            } else if (c.name == 'mask') {
+              return _react2.default.createElement(
+                'mask',
+                _extends({}, c.attrs, { key: _this2.currentKey++ }),
+                _this2._renderChildren(c.childs, _this2.currentKey++)
+              );
+            } else if (c.name == 'use') {
+              return _react2.default.createElement('use', _extends({}, c.attrs, { key: _this2.currentKey++ }));
+            } else if (c.name === 'polygon') {
               var _attrs = Object.assign({}, c.attrs);
               if (_this2.props.color && _this2._shouldApplyFillAttr(_attrs)) {
                 _attrs = Object.assign(_attrs, { fill: _this2.props.color });
               }
 
               return _react2.default.createElement(
+                'polygon',
+                _extends({}, _attrs, { key: _this2.currentKey++ }),
+                _this2._renderChildren(c.childs, _this2.currentKey++)
+              );
+            } else if (c.name === 'path') {
+              var _attrs2 = Object.assign({}, c.attrs);
+              if (_this2.props.color && _this2._shouldApplyFillAttr(_attrs2)) {
+                _attrs2 = Object.assign(_attrs2, { fill: _this2.props.color });
+              }
+
+              return _react2.default.createElement(
                 'path',
-                _extends({}, _attrs, { key: _this2.currentKey }),
+                _extends({}, _attrs2, { key: _this2.currentKey++ }),
                 _this2._renderChildren(c.childs, _this2.currentKey++)
               );
             } else if (c.name == 'ellipse') {
@@ -533,6 +560,7 @@ var createSvgFromSet = function createSvgFromSet(iconFile) {
         var _this3 = this;
 
         this.currentKey = 0;
+        console.log(this.props.name);
         var iconJSON = iconFile.find(function (s) {
           return s.title === _this3.props.name;
         });

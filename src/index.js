@@ -11,10 +11,41 @@ const createSvgFromSet = (iconFile) => {
       if (children) {
         return children.map(c => {
           if (c.name === 'g') {
+            let attrs = Object.assign({}, c.attrs);
+            if (this.props.color && this._shouldApplyFillAttr(attrs)) {
+              attrs = Object.assign(attrs, {fill: this.props.color});
+            }
+
             return (
-              <g {...c.attrs} key={this.currentKey}>
+              <g {...attrs} key={this.currentKey++}>
                 {this._renderChildren(c.childs, this.currentKey++)}
               </g>
+            )
+          } else if (c.name === 'defs') {
+            return (
+              <defs {...c.attrs} key={this.currentKey++}>
+                {this._renderChildren(c.childs, this.currentKey++)}
+              </defs>
+            )
+          } else if (c.name === 'linearGradient') {
+            return (
+              <linearGradient {...c.attrs} key={this.currentKey++}>
+                {this._renderChildren(c.childs, this.currentKey++)}
+              </linearGradient>
+            )
+          } else if (c.name === 'stop') {
+            return (
+              <stop {...c.attrs} key={this.currentKey++}></stop>
+            )
+          } else if (c.name == 'mask') {
+            return (
+              <mask {...c.attrs} key={this.currentKey++}>
+                {this._renderChildren(c.childs, this.currentKey++)}
+              </mask>
+            )
+          } else if (c.name == 'use') {
+            return (
+              <use {...c.attrs} key={this.currentKey++}></use>
             )
           } else if (c.name === 'polygon') {
             let attrs = Object.assign({}, c.attrs);
@@ -23,7 +54,7 @@ const createSvgFromSet = (iconFile) => {
             }
 
             return (
-              <polygon {...attrs} key={this.currentKey}>
+              <polygon {...attrs} key={this.currentKey++}>
                 {this._renderChildren(c.childs, this.currentKey++)}
               </polygon>
             )
@@ -34,7 +65,7 @@ const createSvgFromSet = (iconFile) => {
             }
 
             return (
-              <path {...attrs} key={this.currentKey}>
+              <path {...attrs} key={this.currentKey++}>
                 {this._renderChildren(c.childs, this.currentKey++)}
               </path>
             )
@@ -49,6 +80,7 @@ const createSvgFromSet = (iconFile) => {
 
     render() {
       this.currentKey = 0;
+      console.log(this.props.name);
       let iconJSON = iconFile.find(s => s.title === this.props.name);
       let attrs = Object.assign({}, iconJSON.attrs);
 
