@@ -560,7 +560,6 @@ var createSvgFromSet = function createSvgFromSet(iconFile) {
         var _this3 = this;
 
         this.currentKey = 0;
-        console.log(this.props.name);
         var iconJSON = iconFile.find(function (s) {
           return s.title === _this3.props.name;
         });
