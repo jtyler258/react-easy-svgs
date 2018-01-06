@@ -80,7 +80,6 @@ const createSvgFromSet = (iconFile) => {
 
     render() {
       this.currentKey = 0;
-      console.log(this.props.name);
       let iconJSON = iconFile.find(s => s.title === this.props.name);
       let attrs = Object.assign({}, iconJSON.attrs);
 
