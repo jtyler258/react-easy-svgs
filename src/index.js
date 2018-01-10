@@ -58,6 +58,12 @@ const createSvgFromSet = (iconFile) => {
                 {this._renderChildren(c.childs, this.currentKey++)}
               </polygon>
             )
+          } else if (c.name === 'circle') {
+            return <circle {...c.attrs} key={this.currentKey++}></circle>
+          } else if (c.name === 'rect') {
+            return <rect {...c.attrs} key={this.currentKey++}></rect>
+          } else if (c.name === 'ellipse') {
+            return <ellipse {...c.attrs} key={this.currentKey++}></ellipse>
           } else if (c.name === 'path') {
             let attrs = Object.assign({}, c.attrs);
             if (this.props.color && this._shouldApplyFillAttr(attrs)) {
